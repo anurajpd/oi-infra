@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: appset-operators
+  namespace: openshift-gitops
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/anurajpd/oi-infra.git
+      revision: main
+      directories:
+      - path: config/services/*/operator
+  template:
+    metadata:
+      name: '{{index .path.segments 2}}-operator'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/anurajpd/oi-infra.git
+        targetRevision: main
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
