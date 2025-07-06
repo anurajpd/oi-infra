@@ -1,0 +1,13 @@
+apiVersion: config.openshift.io/v1
+kind: ImageTagMirrorSet
+metadata:
+  name: official-tag-mirrors
+spec:
+  imageTagMirrors:
+    - source: registry.redhat.io
+      mirrors:
+        - registry.anurajpd.com
+    - source: quay.io
+      mirrors:
+        - registry.anurajpd.com
+  mirrorSourcePolicy: NeverContactSource

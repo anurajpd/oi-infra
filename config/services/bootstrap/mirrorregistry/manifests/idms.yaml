@@ -1,0 +1,13 @@
+apiVersion: config.openshift.io/v1
+kind: ImageDigestMirrorSet
+metadata:
+  name: official-digest-mirrors
+spec:
+  imageDigestMirrors:
+    - source: registry.redhat.io
+      mirrors:
+        - registry.anurajpd.com
+    - source: quay.io
+      mirrors:
+        - registry.anurajpd.com
+  mirrorSourcePolicy: NeverContactSource
