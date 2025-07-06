@@ -6,7 +6,7 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/anurajpd/oi-infra.git
+      repoURL: https://git.anurajpd.com.com/anurajpd/oi-infra.git
       revision: main
       directories:
       - path: config/services/operators/*/crs
@@ -16,7 +16,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/anurajpd/oi-infra.git
+        repoURL: https://git.anurajpd.com/anurajpd/oi-infra.git
         targetRevision: main
         path: '{{path}}'
       destination:
