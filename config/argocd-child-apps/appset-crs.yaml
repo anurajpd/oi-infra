@@ -3,6 +3,8 @@ kind: ApplicationSet
 metadata:
   name: appset-crs
   namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
 spec:
   generators:
   - git:
@@ -10,6 +12,8 @@ spec:
       revision: main
       directories:
       - path: config/services/operators/*/crs
+      exclude:
+      - config/services/operators/dell-csm/crs
   template:
     metadata:
       name: '{{index .path.segments 3}}-crs'

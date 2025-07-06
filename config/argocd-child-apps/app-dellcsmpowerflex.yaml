@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-dellcsmpowerflex
+  namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  project: default
+  source:
+    repoURL: https://git.anurajpd.com/anurajpd/oi-infra.git
+    targetRevision: HEAD
+    path: config/services/operators/dell-csm/crs
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: powerflex
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

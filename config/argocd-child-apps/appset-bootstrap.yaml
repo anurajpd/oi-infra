@@ -1,28 +1,30 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: appset-operators
+  name: appset-bootstrap
   namespace: openshift-gitops
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
 spec:
   generators:
   - git:
-      repoURL: https://git.anurajpd.com.com/anurajpd/oi-infra.git
-      revision: main
+      repoURL: https://git.anurajpd.com/anurajpd/oi-infra.git
+      revision: HEAD
       directories:
-      - path: config/services/operators/*/operator
+      - path: config/services/bootstrap/*/manifests
   template:
     metadata:
-      name: '{{index .path.segments 3}}-operator'
+      name: '{{index .path.segments 3}}-bootstrap'
     spec:
       project: default
       source:
-        repoURL: https://git.anurajpd.com.com/anurajpd/oi-infra.git
-        targetRevision: main
+        repoURL: https://git.anurajpd.com/anurajpd/oi-infra.git
+        targetRevision: HEAD
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
         namespace: default
       syncPolicy:
         automated:
-          prune: true
+          prune: false
           selfHeal: true

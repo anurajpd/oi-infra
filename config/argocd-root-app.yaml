@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/anurajpd/oi-infra.git'
+    repoURL: 'https://git.anurajpd.com/anurajpd/oi-infra.git'
     targetRevision: HEAD
-    path: 'argocd-child-appsets'
+    path: 'argocd-child-apps'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: openshift-gitops
@@ -16,3 +16,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+    - CreateNamespace=true  
