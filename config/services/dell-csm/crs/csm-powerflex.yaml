@@ -1,0 +1,9 @@
+apiVersion: storage.dell.com/v1
+kind: ContainerStorageModule
+metadata:
+  name: powerflex
+  namespace: powerflex
+spec:
+  driver:
+    csiDriverType: "powerflex"
+    configVersion: v2.14.0
