@@ -5,14 +5,14 @@ metadata:
   namespace: openshift-gitops
 spec:
   generators:
-    - git:
-        repoURL: https://github.com/anurajpd/oi-infra.git
-        revision: main
-        directories:
-          - path: config/services/*/crs
+  - git:
+      repoURL: https://github.com/anurajpd/oi-infra.git
+      revision: main
+      directories:
+      - path: config/services/operators/*/crs
   template:
     metadata:
-      name: '{{index .path.segments 2}}-crs'
+      name: '{{index .path.segments 3}}-crs'
     spec:
       project: default
       source:
