@@ -29,7 +29,7 @@
 
 7. Upload the ignition file to the HTTP repository.
 
-8. Boot the node from the RHOCS boot images.
+8. One of the compute node will be used as temporary bootstrap node. Boot the nodes from the RHOCS boot images.
 
 9. Install the RHOCS on to the node with the required customizations including the nework configurations using the coreos-installer.
 
@@ -42,3 +42,5 @@
 13. Install and configure the openshift-gitops.
 
 14. Configure the argocd instance to connect to the git repository containes the openshift configurations.
+
+15. Conduct UAT test before releasing the infrastructure for production.
