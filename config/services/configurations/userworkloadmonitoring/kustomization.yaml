@@ -1,0 +1,5 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- cm-user-workload-monitoring-config.yaml
+namespace: openshift-user-workload-monitoring
