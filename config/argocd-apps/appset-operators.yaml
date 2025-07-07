@@ -9,7 +9,7 @@ spec:
   generators:
   - git:
       repoURL: https://git.anurajpd.com.com/anurajpd/oi-infra.git
-      revision: main
+      revision: HEAD
       directories:
       - path: config/services/operators/*/operator
   template:
@@ -19,7 +19,7 @@ spec:
       project: default
       source:
         repoURL: https://git.anurajpd.com.com/anurajpd/oi-infra.git
-        targetRevision: main
+        targetRevision: HEAD
         path: '{{path}}'
       destination:
         server: https://kubernetes.default.svc
@@ -28,3 +28,5 @@ spec:
         automated:
           prune: true
           selfHeal: true
+        syncOptions:
+        - CreateNamespace=true

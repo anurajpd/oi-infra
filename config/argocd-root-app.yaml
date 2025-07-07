@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://git.anurajpd.com/anurajpd/oi-infra.git'
     targetRevision: HEAD
-    path: 'argocd-child-apps'
+    path: 'argocd-apps'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: openshift-gitops
