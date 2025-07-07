@@ -12,10 +12,10 @@ Red Hat OpenShift Container Platform:
 The solution is designed as a single site solution without any single point of failure, and doesnot consider multi-zone or mutli-site cluster topology.
 
 ### Rack Elevation
-![Rack Elevation](https://github.com/user-attachments/assets/a58c63f5-3890-4fb8-88d2-54f55aa74b59)
+![Network Connectivity](https://github.com/user-attachments/assets/837d00d2-30f4-4339-8226-67b5ee45d81d)
 
 ### Network Connectivity
-![Network Connectivity](https://github.com/user-attachments/assets/a228889f-d3ed-4aca-9025-02e536286dee)
+![Network Connectivity](https://github.com/user-attachments/assets/4bbf7286-78e0-4b26-8392-56cf5449e3e1)
 
 ### Node Connectivity
 ![Node Connectivity](https://github.com/user-attachments/assets/7b70dce3-61e5-4ae4-8184-4dc40e6da1a7)
