@@ -11,6 +11,9 @@ Red Hat OpenShift Container Platform:
 
 The solution is designed as a single site solution without any single point of failure, and doesnot consider multi-zone or mutli-site cluster topology.
 
+### Network Connectivity
+![Network Connectivity](https://github.com/user-attachments/assets/a228889f-d3ed-4aca-9025-02e536286dee)
+
 ### Cluster Installation
 Various methods are available for deploying the Red Hat OpenShift Container Platform on Bare Metal server, we decided to use the UPI deployment methodology as this option provides us with the full customization capabilities during the deployment.
 
