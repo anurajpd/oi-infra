@@ -41,41 +41,52 @@ Dell PowerFlex:
 * Lifecycle of the Storage array independant of the OpenShift Cluster.
 * Ability to support multiple OpenShift cluster, consolidating the storage.
 
-#### Object Storage
+##### Object Storage
 Dell ObjectScale is selected as the object storage platform.
 Dell ObjectScale:
 * Scaleout architecture, massively scalable storage array which can support the cloud native workloads.
 * Lifecycle of the storage array independant of the OpenShift cluster.
 * Ability to support multiple OpenShift clusters, consolidating the storage.
 
-#### File Storage
+##### File Storage
 The file storage is not considerd in this design, but can be later integrated in to the environment.
 
-### Image Registry
+#### Image Registry
 
-#### Internal Registry
+##### Internal Registry
 OpenShift cluster has a internal registry which required for the normal operation of the cluster. The internal registry must be configured with persistent storage for persistently storing the container images. We decided to configure the internal image registry to use object storage, S3 bucket configured in the Dell ObjecctScale.
 
-#### External Registry
+##### External Registry
 Red Hat Quay has been chosen as the external image registry, and it will be deployed on the OpenShift cluster using an S3 bucket from Dell ObjectScale as its storage backend. 
 
-#### Mirror Registry
+##### Mirror Registry
 Local image registry is required for the deployment of OpenShift cluster in an air-gapped environment, a temporary mirror registry will be deployed to support the inital openshift cluster deployment. All the container images required for the installation of the openshift cluster is synced to the mirror registry using the oc-mirror utility. The bastion node will host the temporary mirror registry.
 
-### Monitoring 
+#### Monitoring 
 Red Hat OpenShift Monitoring will be configured for both the cluster monitoring and the user workload monitoring. For every application which exposes the metrices can be scraped by the user workload monitoring prometheus instance running in the openshift cluster. The metrics then can be monitored from the OpenShift console, if required custom dasboards can be created and added to the openshift console. Eventhough not considerd in the design, it is possible to connect grafana with the openshift monitoring stack for visualizing the metrices.
 
-### Logging
+#### Logging
 Red Hat OpenShift cluster logging will be configured to forward the audit, infrastructure and application logs to a remote syslog server.
 
-### Authentication
+#### Authentication
 Oepnshift cluster will be integrated with the active directory using ldaps as the external identity provider. Active directory security groups will be used to grant the access control.
 
-### Valut Server
+#### Valut Server
 The design proposes the use of vault server to keep all the secrets including the credentials, certificates, api keys, however the design does not incude the procedure for the deployment and integration of vault server and the secrets, certificates, keys are pushed to the git repostory, which is done only to demonstrate the application deployment and keep the scope to minimum and must not be done in production.
 
-### Disaster Recovery
+#### Disaster Recovery
 The design doesnot consider the disaster recovery and business continuity requirements, however the design can be extended to include disaster recovery soultion.
 
-### Backup and Recovery
+#### Backup and Recovery
 The microservice application has persistent data in the database, the design includes a backup and recovery solution to protect the persistent data. The design proposes Dell PowerProtect Manager as the Backup Storage and Dell PowerProtect DataDomain as the Backup Storage, however didn't included the configuration and integration of the backup solution with the openshift cluster.
+
+### Upgrade Cycles
+
+* OpenShift Cluster: OpenShift Cluster upgrades can follow the Red Hat release cycles.
+* Catalog Source: Catalog source can be setup to sync periodically.
+* Operators: This depend on the operator, most operators can be configured for auto upgrade when the latest versions are available.
+* Custom Resources: It is good to configure to use a specific version if possible, but not always possible depends on the operator, the upgrades for these must be planned depending on the operator.
+* Other Infrastructure Components: Components like ans Storage, Networking, Server Firmware etc can be upgraded based on their vendor release cycles, these will require dependencies and compatability analysis before proceeding with the upgrades.
+* Workloads: Workloads can follow their own release cycles independent of the infrastructure upgrade cycles.
+
+
