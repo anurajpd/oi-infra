@@ -1,0 +1,16 @@
+apiVersion: imageregistry.operator.openshift.io/v1
+kind: Config
+metadata:
+  name: cluster
+spec:
+  managementState: Managed
+  storage:
+    managementState: Unmanaged
+    s3:
+      bucket: image-registry
+      region: us-east-1
+      regionEndpoint: https://s3.anurajpd.com
+      virtualHostedStyle: false
+      encrypt: false
+      trustedCA:
+        name: trustedca
