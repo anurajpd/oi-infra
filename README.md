@@ -1,7 +1,7 @@
 # Design - Platform to Support Microservice Applications.
 
 ## Infrastructure Platform:
-This design proposes to use the Red Hat OpenShift Container Platform deployed on Bare Matal Servers as the Infrastructure platform to support the Microsevice Applications. The infrastructure is built on-premises within a fully air-gapped environment.
+This design proposes to use the Red Hat OpenShift Container Platform deployed on Bare Metal Servers as the Infrastructure platform to support the Microsevice Applications. The infrastructure is built on-premises within a fully air-gapped environment.
 
 Kubernetes is the popular and widely adopted purpose build platform to run the microservices application, as the organization is embracing the cloud native architecuture Kubernetes is a natural choice. We have the option to use upstream Kubernetes or an enterprise distribution. We decided to go with the enterprise distribution - Red Hat OpenShift Container Platform.
 
@@ -10,6 +10,9 @@ Red Hat OpenShift Container Platform:
 * Popularity in enterprise environements and huge ecosystem support.
 
 The solution is designed as a single site solution without any single point of failure, and doesnot consider multi-zone or mutli-site cluster topology.
+
+### Rack Elevation
+![Rack Elevation](https://github.com/user-attachments/assets/a58c63f5-3890-4fb8-88d2-54f55aa74b59)
 
 ### Network Connectivity
 ![Network Connectivity](https://github.com/user-attachments/assets/a228889f-d3ed-4aca-9025-02e536286dee)
